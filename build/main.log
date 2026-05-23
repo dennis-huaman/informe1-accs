@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.5.23)  23 MAY 2026 23:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.5.23)  24 MAY 2026 00:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -787,7 +787,7 @@ Overfull \hbox (63.14865pt too wide) in paragraph at lines 67--74
 File: figs/montaje_hardware.png Graphic file (type png)
 <use figs/montaje_hardware.png>
 Package pdftex.def Info: figs/montaje_hardware.png  used on input line 91.
-(pdftex.def)             Requested size: 312.00119pt x 233.98296pt.
+(pdftex.def)             Requested size: 390.0pt x 292.46693pt.
 
 
 [23]
@@ -795,7 +795,7 @@ Package pdftex.def Info: figs/montaje_hardware.png  used on input line 91.
 File: figs/celda_carga.png Graphic file (type png)
 <use figs/celda_carga.png>
 Package pdftex.def Info: figs/celda_carga.png  used on input line 99.
-(pdftex.def)             Requested size: 312.00119pt x 415.99062pt.
+(pdftex.def)             Requested size: 350.99762pt x 467.9973pt.
 
 
 [24 <./figs/montaje_hardware.png>]
@@ -806,16 +806,18 @@ Package pdftex.def Info: figs/montaje_final.jpeg  used on input line 108.
 (pdftex.def)             Requested size: 331.50238pt x 248.60396pt.
 )
 
-[25 <./figs/celda_carga.png>] (./conclusiones.tex) (build/main.bbl
+[25 <./figs/celda_carga.png>] (./conclusiones.tex
+
+[26 <./figs/montaje_final.jpeg>]
+
+[27]) (build/main.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 35--37
-\T1/cmr/m/n/12 / / ww1 . microchip . com / downloads / aemDocuments / documents / MSLD /
+\T1/cmr/m/n/12 aemDocuments / documents / MSLD / ProductDocuments / DataSheets /
  []
 
+)
 
-
-[26 <./figs/montaje_final.jpeg>])
-
-[27] (build/main.aux
+[28] (build/main.aux
 LaTeX Info: Redefining \. on input line 13.
 LaTeX Info: Redefining \% on input line 13.
 )
@@ -827,18 +829,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: C24288643C31F6E4460254940724589C;8853.
  ) 
 Here is how much of TeX's memory you used:
- 29414 strings out of 473190
- 599604 string characters out of 5719979
- 975861 words of memory out of 5000000
+ 29424 strings out of 473190
+ 599667 string characters out of 5719979
+ 975859 words of memory out of 5000000
  52120 multiletter control sequences out of 15000+600000
  577179 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,9n,93p,1139b,1177s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,9n,93p,1139b,1178s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on build/main.pdf (27 pages, 28060615 bytes).
+Output written on build/main.pdf (28 pages, 28064871 bytes).
 PDF statistics:
- 479 PDF objects out of 1000 (max. 8388607)
- 377 compressed objects within 4 object streams
- 87 named destinations out of 1000 (max. 500000)
+ 494 PDF objects out of 1000 (max. 8388607)
+ 391 compressed objects within 4 object streams
+ 97 named destinations out of 1000 (max. 500000)
  357 words of extra memory for PDF output out of 10000 (max. 10000000)
 

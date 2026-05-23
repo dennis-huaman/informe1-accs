@@ -1,18 +1,18 @@
 # Fdb version 4
-["bibtex build/main"] 1779573435.34599 "build/main.aux" "build/main.bbl" "build/main" 1779573515.8147 0
-  "./referencias.bib" 1779537072 1899 2ff84223b7f4442b670b3bca4e10bf0f ""
-  "build/main.aux" 1779573514 12719 b869ab73e079a6c24939a151ef0fc594 "pdflatex"
+["bibtex build/main"] 1779574635.59842 "build/main.aux" "build/main.bbl" "build/main" 1779574644.62042 0
+  "./referencias.bib" 1779574634 1889 d2ccb04ab6fab5a9226087d7404bd5a2 ""
+  "build/main.aux" 1779574643 12719 1524c94ba90acdc02f7b45ddb37dc93c "pdflatex"
   "c:/texlive/2025/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1779530270 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
   (generated)
   "build/main.bbl"
   "build/main.blg"
   (rewritten before read)
-["pdflatex"] 1779573507.35137 "c:/Users/Dennis/Desktop/ACSS COMPILER/INFORME 1/main.tex" "build/main.pdf" "main" 1779573515.81545 0
+["pdflatex"] 1779574636.28666 "c:/Users/Dennis/Desktop/ACSS COMPILER/INFORME 1/main.tex" "build/main.pdf" "main" 1779574644.62116 0
   "acondicionamiento_dinamico.tex" 1779560767 3571 e12736198f2bc667886a6b3f9692137f ""
   "acondicionamiento_estatico.tex" 1779573308 12510 f4312ed181e4254d011348f3883286f3 ""
-  "build/main.aux" 1779573514 12719 b869ab73e079a6c24939a151ef0fc594 "pdflatex"
-  "build/main.bbl" 1779573436 2415 db4bd0906b060810ac3996f41d44cb8c "bibtex build/main"
-  "build/main.out" 1779573514 8853 c24288643c31f6e4460254940724589c "pdflatex"
+  "build/main.aux" 1779574643 12719 1524c94ba90acdc02f7b45ddb37dc93c "pdflatex"
+  "build/main.bbl" 1779574636 2405 c8679afec770cb7f986b831cc35dbce9 "bibtex build/main"
+  "build/main.out" 1779574643 8853 c24288643c31f6e4460254940724589c "pdflatex"
   "c:/Users/Dennis/Desktop/ACSS COMPILER/INFORME 1/main.tex" 1779572293 1437 42cbb0bc7c98f153975ec5ec8fd6b3dd ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1779529640 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1779529640 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -219,7 +219,7 @@
   "c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1779531888 5512713 d5293fe2524c042fff1d1aaaba621917 ""
   "c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1779532223 3346128 3104a0a3dd292dd8908cf4ccb4e33a40 ""
   "c:/texlive/2025/texmf.cnf" 1779531859 713 e69b156964470283e0530f5060668171 ""
-  "conclusiones.tex" 1779537072 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "conclusiones.tex" 1779574403 4191 1b49740dd21a533a0dd8b55420415ea8 ""
   "figs/CKTO AD623.png" 1779553434 6735 5ae050bc5c27eec03b77a442c6931e5b ""
   "figs/CKTO FILTRO.png" 1779557660 6156 a9af599e695e1a7ce2b5b0314c05b676 ""
   "figs/CKTO MCP6021.png" 1779552621 7620 015fefbb73213801c6eda079658e9b43 ""
@@ -240,7 +240,7 @@
   "labview.tex" 1779573126 8037 fc4da575c50cf1493ec8a384c447409b ""
   "main.tex" 1779572293 1437 42cbb0bc7c98f153975ec5ec8fd6b3dd ""
   "ruido_cuantizacion.tex" 1779567879 7812 283c310eef6acd94c1a03dc89f676c2f ""
-  "validacion.tex" 1779573506 8954 878d3c3ad16f837957ffef60db454d4e ""
+  "validacion.tex" 1779574425 8952 2223d049591d4c433cfe85ed3b4380a4 ""
   (generated)
   "build/main.aux"
   "build/main.log"

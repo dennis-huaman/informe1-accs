@@ -1,0 +1,23 @@
+El desarrollo y validación del sistema de pesaje permiten establecer las siguientes conclusiones técnicas:
+
+\begin{enumerate}
+    \item La arquitectura implementada, compuesta por la excitación de referencia (objeto a pesar), puente sensor, amplificación de instrumentación, filtrado analógico, adquisición diferencial y procesamiento en \textit{LabVIEW}, permitió materializar una cadena de medida coherente con los requerimientos del informe y funcional en el intervalo experimental de \SIrange{0}{1500}{\g}.
+
+    \item La etapa de acondicionamiento estático cumplió el objetivo de trasladar una señal diferencial del orden de los milivoltios a un nivel utilizable por la DAQ. Con el valor seleccionado de $R_G=\SI{50.2}{\ohm}$ se obtuvo una ganancia aproximada de $G\approx 1993$, lo que condujo a una sensibilidad teórica de alrededor de \SI{1.633}{\milli\V\per\g} y permitió aprovechar de forma segura el rango de entrada del sistema de adquisición.
+
+    \item El pedestal de referencia medido de \SI{1.597}{\V} resultó decisivo para evitar la saturación inferior de la señal analógica. Aunque la tensión en reposo medida de \SI{0.42}{\V} quedó por debajo del intervalo previsto por el análisis de peor caso, el sistema permaneció operativo y la desviación residual pudo ser compensada eficazmente mediante la rutina de tara en \textit{LabVIEW}.
+
+    \item El acondicionamiento dinámico y la adquisición en modo diferencial constituyeron una decisión correcta de diseño. El filtrado de entrada ayudó a limitar interferencias de alta frecuencia sin degradar la banda útil de pesaje, mientras que la lectura diferencial entre AI0 y AI4 redujo la vulnerabilidad frente a ruido en modo común y mantuvo coherencia con la naturaleza diferencial de la señal entregada por la etapa analógica.
+
+    \item La selección de condensadores de poliéster en el filtro de entrada y de condensadores de desacoplo en la excitación de referencia contribuyó de forma directa a la estabilidad eléctrica del sistema. Los primeros ayudaron a conservar el equilibrio de impedancias entre ramas y, con ello, el rechazo de perturbaciones rápidas y de modo común del AD623; los segundos atenuaron transitorios y rizado en la alimentación del puente, evitando que fluctuaciones de la referencia se propagaran como error hacia la medida final.
+
+    \item El análisis conjunto de ruido analógico y cuantización mostró que la limitación inicial del sistema no provenía únicamente del ADC, sino también del ruido de la cadena analógica. La estimación de \SI{470.7}{\micro\V} RMS a la salida y de aproximadamente \SI{3.11}{\milli\V} pico a pico, superior a un LSB de \SI{1.2207}{\milli\V}, justifica técnicamente el promediado digital de 32 muestras como una medida necesaria y no meramente conveniente.
+
+    \item La etapa de procesamiento digital mejoró de manera efectiva la resolución útil del instrumento. Con el promedio de 32 muestras a \SI{128}{\Hz}, el ruido equivalente descendió hasta aproximadamente \SI{83.2}{\micro\V} RMS, lo que lleva la resolución efectiva al entorno de \SI{0.34}{\g} con sensibilidad teórica y \SI{0.35}{\g} con sensibilidad experimental; en consecuencia, el sistema logró una capacidad de discriminación consistente con el objetivo de medición fina dentro del rango ensayado.
+
+    \item La calibración de dos puntos mostró consistencia entre el cálculo manual y la implementación en \textit{LabVIEW}. El factor experimental de \\ \SI{643.42}{\g\per\V} y el valor configurado de  \SI{642.49}{\g\per\V} difieren solo en \SI{0.145}{\percent}, lo que indica que el instrumento virtual reproduce adecuadamente la pendiente de calibración y que los errores de implementación del \textit{software} son pequeños frente al comportamiento global del sistema.
+
+    \item La validación experimental confirmó una respuesta aproximadamente lineal en el intervalo realmente ensayado. A partir de los puntos de \SI{0}{\g}, \SI{1000}{\g} y \SI{1500}{\g}, la máxima desviación absoluta observada fue de \SI{3.46}{\g} y los errores relativos permanecieron por debajo de \SI{0.346}{\percent}.
+
+
+\end{enumerate}
