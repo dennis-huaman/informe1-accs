@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 990 660" width="990" height="660">
+  <path d="M480.00,240.00 L480.00,270.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M270.00,90.00 L240.00,90.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M480.00,120.00 L480.00,90.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M420.00,90.00 L480.00,90.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M480.00,540.00 L480.00,570.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M270.00,390.00 L240.00,390.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M480.00,420.00 L480.00,390.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M420.00,390.00 L480.00,390.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M600.00,90.00 L480.00,90.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M600.00,390.00 L480.00,390.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <rect x="300.00" y="78.00" width="90.00" height="24.00" stroke="#800000" stroke-width="5.00" fill="#c8c8aa"/>
+  <line x1="270.00" y1="90.00" x2="300.00" y2="90.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="420.00" y1="90.00" x2="390.00" y2="90.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="298.00" y="67.00" font-family="Arial" font-size="37.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">R5</text>
+  <text x="298.00" y="126.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">13.7k</text>
+  <line x1="450.00" y1="171.00" x2="510.00" y2="171.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="450.00" y1="189.00" x2="510.00" y2="189.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="480.00" y1="189.00" x2="480.00" y2="210.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="480.00" y1="171.00" x2="480.00" y2="150.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="480.00" y1="120.00" x2="480.00" y2="150.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="480.00" y1="240.00" x2="480.00" y2="210.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="527.00" y="182.00" font-family="Arial" font-size="37.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">C7</text>
+  <text x="527.00" y="215.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">2.2uF</text>
+  <line x1="480.00" y1="270.00" x2="480.00" y2="300.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="450.00" y1="300.00" x2="510.00" y2="300.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="465.00" y1="315.00" x2="495.00" y2="315.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="477.00" y1="330.00" x2="483.00" y2="330.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <ellipse cx="192.00" cy="90.00" rx="12.00" ry="12.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="204.00" y1="90.00" x2="240.00" y2="90.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <text x="63.00" y="98.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">OUTPUT</text>
+  <ellipse cx="648.00" cy="90.00" rx="12.00" ry="12.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="636.00" y1="90.00" x2="600.00" y2="90.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <text x="675.00" y="98.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">AI0 (LABVIEW)</text>
+  <ellipse cx="480.00" cy="90.00" rx="6.00" ry="6.00" stroke="#004000" stroke-width="5.00" fill="#004000"/>
+  <rect x="300.00" y="378.00" width="90.00" height="24.00" stroke="#800000" stroke-width="5.00" fill="#c8c8aa"/>
+  <line x1="270.00" y1="390.00" x2="300.00" y2="390.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="420.00" y1="390.00" x2="390.00" y2="390.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="298.00" y="367.00" font-family="Arial" font-size="37.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">R6</text>
+  <text x="298.00" y="426.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">13.7k</text>
+  <line x1="450.00" y1="471.00" x2="510.00" y2="471.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="450.00" y1="489.00" x2="510.00" y2="489.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="480.00" y1="489.00" x2="480.00" y2="510.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="480.00" y1="471.00" x2="480.00" y2="450.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="480.00" y1="420.00" x2="480.00" y2="450.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="480.00" y1="540.00" x2="480.00" y2="510.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="527.00" y="482.00" font-family="Arial" font-size="37.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">C8</text>
+  <text x="527.00" y="515.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">2.2uF</text>
+  <line x1="480.00" y1="570.00" x2="480.00" y2="600.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="450.00" y1="600.00" x2="510.00" y2="600.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="465.00" y1="615.00" x2="495.00" y2="615.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="477.00" y1="630.00" x2="483.00" y2="630.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <ellipse cx="192.00" cy="390.00" rx="12.00" ry="12.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="204.00" y1="390.00" x2="240.00" y2="390.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <text x="115.00" y="398.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">REF</text>
+  <ellipse cx="648.00" cy="390.00" rx="12.00" ry="12.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="636.00" y1="390.00" x2="600.00" y2="390.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <text x="675.00" y="398.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">AI4 (LABVIEW)</text>
+  <ellipse cx="480.00" cy="390.00" rx="6.00" ry="6.00" stroke="#004000" stroke-width="5.00" fill="#004000"/>
+</svg>

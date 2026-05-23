@@ -1,0 +1,59 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{cite}        % o biblatex según prefieras
+\usepackage{siunitx}     % unidades SI en minúscula, obligatorio por rúbrica
+\usepackage{float}
+\usepackage{caption}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+\usepackage{svg}
+\usepackage{subcaption}
+
+\title{Proyecto 1-ACSS}
+\author{
+Renato Bedriñana Cárdenas,
+Dennis Huaman Yrigoin
+}
+\date{May 2026}
+
+\begin{document}
+
+\maketitle
+
+% ==========================================
+% SECCIONES DEL INFORME
+
+% ==========================================
+
+\section{Introducción y Objetivos}
+\input{introduccion.tex}
+
+\section{Acondicionamiento Estático (Análisis DC y Amplificación)}
+\input{acondicionamiento_estatico.tex}
+
+\section{Acondicionamiento Dinámico (Filtrado AC y Adquisición)}
+\input{acondicionamiento_dinamico.tex}
+
+\section{Análisis de Ruido y Cuantización}
+\input{ruido_cuantizacion.tex}
+
+\section{Diseño del Instrumento Virtual (LabVIEW)}
+\input{labview.tex}
+
+\section{Validación y Resultados Experimentales}
+\input{validacion.tex}
+
+\section{Conclusiones}
+\input{conclusiones.tex}
+
+\bibliographystyle{IEEEtran}
+\bibliography{referencias}
+
+\end{document}

@@ -1,0 +1,103 @@
+\relax 
+\providecommand{\transparent@use}[1]{}
+\providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
+\@nameuse{bbl@beforestart}
+\catcode `"\active 
+\catcode `<\active 
+\catcode `>\active 
+\@nameuse{es@quoting}
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{loadcell_datasheet}
+\citation{microchip_mcp1525_2012}
+\citation{mcp6021_datasheet}
+\citation{ni6001_datasheet}
+\citation{mcp6021_datasheet}
+\babel@aux{spanish}{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introducción y Objetivos}{1}{section.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Arquitectura general del sistema de pesaje a nivel de bloques.}}{1}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:bloques}{{1}{1}{Arquitectura general del sistema de pesaje a nivel de bloques}{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Objetivos}{1}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Requisitos técnicos}{1}{subsection.1.2}\protected@file@percent }
+\citation{microchip_mcp1525_2012}
+\citation{mcp6021_datasheet}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Acondicionamiento Estático (Análisis DC y Amplificación)}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Generación de la tensión de excitación}{2}{subsection.2.1}\protected@file@percent }
+\newlabel{fig:vref_esquema}{{2a}{2}{Esquema del circuito}{figure.caption.2}{}}
+\newlabel{sub@fig:vref_esquema}{{a}{2}{Esquema del circuito}{figure.caption.2}{}}
+\newlabel{fig:vref_impl}{{2b}{2}{Montaje en la \textit {protoboard}}{figure.caption.2}{}}
+\newlabel{sub@fig:vref_impl}{{b}{2}{Montaje en la \textit {protoboard}}{figure.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Circuito de generación de \texttt  {VREF} mediante la referencia MCP1541.}}{2}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:vref}{{2}{2}{Circuito de generación de \texttt {VREF} mediante la referencia MCP1541}{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Generación del pedestal de referencia}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Circuito generador del pedestal de referencia en su configuración final: divisor resistivo ($R_1 = \SI {68}{\kohm }$, $R_2 = 2 \times \SI {22}{\kohm } = \SI {44}{\kohm }$) y seguidor MCP6021 con salida al pin~5 (REF) del AD623.}}{3}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:pedestal}{{3}{3}{Circuito generador del pedestal de referencia en su configuración final: divisor resistivo ($R_1 = \SI {68}{\kohm }$, $R_2 = 2 \times \SI {22}{\kohm } = \SI {44}{\kohm }$) y seguidor MCP6021 con salida al pin~5 (REF) del AD623}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Análisis de Tolerancias (Worst-Case DC)}{3}{subsection.2.3}\protected@file@percent }
+\citation{ad623_datasheet}
+\citation{ad623_datasheet}
+\citation{ad623_datasheet}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Cálculo del error inherente del sensor}{4}{subsubsection.2.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Error de la etapa de amplificación}{4}{subsubsection.2.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}Errores referidos a la entrada (amplificados por la ganancia G)}{4}{subsubsection.2.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.4}Errores referidos a la salida (independientes de la ganancia)}{5}{subsubsection.2.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.5}Ecuación global del peor escenario y contraste de saturación}{5}{subsubsection.2.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Acondicionamiento Dinámico (Filtrado AC y Adquisición)}{5}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Filtro RFI de entrada}{5}{subsection.3.1}\protected@file@percent }
+\citation{ad623_datasheet}
+\citation{ni6001_datasheet}
+\citation{ni6001_datasheet}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Filtro RFI de entrada: resistencias $R_w$ y condensadores a masa en cada rama, y condensador diferencial de \SI {1}{\micro \F } entre los pines de entrada del AD623.}}{6}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:filtro_rfi}{{4}{6}{Filtro RFI de entrada: resistencias $R_w$ y condensadores a masa en cada rama, y condensador diferencial de \SI {1}{\micro \F } entre los pines de entrada del AD623}{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Red de adaptación de salida}{6}{subsection.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Red de adaptación de salida: filtros RC simétricos en las líneas $V_o$ y $V_{\mathrm  {REF}}$ hacia los canales AI0 y AI4 de la NI USB-6001.}}{6}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:filtro_salida}{{5}{6}{Red de adaptación de salida: filtros RC simétricos en las líneas $V_o$ y $V_{\mathrm {REF}}$ hacia los canales AI0 y AI4 de la NI USB-6001}{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Análisis de Ruido y Cuantización}{7}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Balance de error dinámico (límite analógico)}{7}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Diseño del Instrumento Virtual (LabVIEW)}{7}{section.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Diagrama de Bloques general en \textit  {LabVIEW}.}}{7}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:diagrama_bloques}{{6}{7}{Diagrama de Bloques general en \textit {LabVIEW}}{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Adquisición y Acondicionamiento de la Señal}{7}{subsection.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Configuración en Modo diferencial en el módulo \textit  {DAQ Assistant}.}}{8}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:diferencial}{{7}{8}{Configuración en Modo diferencial en el módulo \textit {DAQ Assistant}}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Arquitectura del VI y Gestión de Memoria Dinámica}{9}{subsection.5.2}\protected@file@percent }
+\newlabel{fig:labview_caso_true}{{8a}{9}{Diagrama de bloques (Caso \textit {True})}{figure.caption.10}{}}
+\newlabel{sub@fig:labview_caso_true}{{a}{9}{Diagrama de bloques (Caso \textit {True})}{figure.caption.10}{}}
+\newlabel{fig:labview_caso_false}{{8b}{9}{Diagrama de bloques (Caso \textit {False})}{figure.caption.10}{}}
+\newlabel{sub@fig:labview_caso_false}{{b}{9}{Diagrama de bloques (Caso \textit {False})}{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Comportamiento de la arquitectura interna del VI según los eventos de control.}}{9}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:estructuras_case}{{8}{9}{Comportamiento de la arquitectura interna del VI según los eventos de control}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Lógica Matemática y Rutinas Condicionales de Calibración}{9}{subsection.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Diagrama de bloques ante la activación del evento de Establecer Cero.}}{10}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:establecer_cero_labview}{{9}{10}{Diagrama de bloques ante la activación del evento de Establecer Cero}{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Diagrama de bloques ante la activación del ajuste de \textit  {Span} utilizando la masa patrón de 1.000 kg.}}{11}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:establecer_span}{{10}{11}{Diagrama de bloques ante la activación del ajuste de \textit {Span} utilizando la masa patrón de 1.000 kg}{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Procesamiento Final, Monitorización e Interfaz de Usuario}{11}{subsection.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Interfaz del Panel Frontal en estado de reposo (Fijación del cero metrológico).}}{12}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:pesajecero}{{11}{12}{Interfaz del Panel Frontal en estado de reposo (Fijación del cero metrológico)}{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Validación experimental del sistema mediante el pesaje de una masa de prueba de 1.5 kg.}}{12}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:pesajedeprueba}{{12}{12}{Validación experimental del sistema mediante el pesaje de una masa de prueba de 1.5 kg}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Validación y Resultados Experimentales}{13}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Metodología de Calibración}{13}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Análisis de Desempeño y Caracterización Metrológica}{14}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}Contraste Empírico sin Carga}{14}{subsubsection.6.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.2}Linealidad y Rango Dinámico}{14}{subsubsection.6.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.3}Estabilidad de la Lectura y Resolución Efectiva}{14}{subsubsection.6.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Montaje Físico y Disposición Mecánica}{15}{subsection.6.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Montaje físico real de la etapa de acondicionamiento eléctrico en la placa de pruebas.}}{15}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:montaje_hardware}{{13}{15}{Montaje físico real de la etapa de acondicionamiento eléctrico en la placa de pruebas}{figure.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Disposición mecánica de la célula de carga y su acoplamiento estructural para el pesaje.}}{16}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:celda_carga}{{14}{16}{Disposición mecánica de la célula de carga y su acoplamiento estructural para el pesaje}{figure.caption.16}{}}
+\bibstyle{IEEEtran}
+\bibdata{referencias}
+\bibcite{loadcell_datasheet}{1}
+\bibcite{microchip_mcp1525_2012}{2}
+\bibcite{mcp6021_datasheet}{3}
+\bibcite{ni6001_datasheet}{4}
+\bibcite{ad623_datasheet}{5}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Montaje final.}}{17}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:pedestal}{{15}{17}{Montaje final}{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusiones}{17}{section.7}\protected@file@percent }
+\gdef\svg@ink@ver@settings{{\m@ne }{inkscape}{\m@ne }}
+\gdef \@abspage@last{17}

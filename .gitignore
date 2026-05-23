@@ -1,0 +1,23 @@
+*.pdf
+*.aux
+*.log
+*.toc
+*.out
+*.lof
+*.lot
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.idx
+*.ilg
+*.ind
+*.swp
+*.bak
+.DS_Store
+Thumbs.db
+
+# Directorios comunes de compilación
+build/
+dist/

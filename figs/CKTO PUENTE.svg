@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 750" width="690" height="750">
+  <path d="M120.00,360.00 L120.00,390.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M120.00,420.00 L120.00,390.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M420.00,360.00 L420.00,390.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M420.00,420.00 L420.00,390.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M120.00,210.00 L120.00,180.00 L270.00,180.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M420.00,210.00 L420.00,180.00 L270.00,180.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M270.00,150.00 L270.00,180.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M120.00,570.00 L120.00,600.00 L270.00,600.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M420.00,570.00 L420.00,600.00 L270.00,600.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M270.00,630.00 L270.00,600.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M210.00,390.00 L120.00,390.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M510.00,390.00 L420.00,390.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <rect x="108.00" y="240.00" width="24.00" height="90.00" stroke="#800000" stroke-width="5.00" fill="#c8c8aa"/>
+  <line x1="120.00" y1="360.00" x2="120.00" y2="330.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="120.00" y1="210.00" x2="120.00" y2="240.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="149.00" y="272.00" font-family="Arial" font-size="37.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">R7</text>
+  <text x="149.00" y="305.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">1k</text>
+  <rect x="408.00" y="240.00" width="24.00" height="90.00" stroke="#800000" stroke-width="5.00" fill="#c8c8aa"/>
+  <line x1="420.00" y1="360.00" x2="420.00" y2="330.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="420.00" y1="210.00" x2="420.00" y2="240.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="449.00" y="272.00" font-family="Arial" font-size="37.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">R8</text>
+  <text x="449.00" y="305.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">1k</text>
+  <rect x="108.00" y="450.00" width="24.00" height="90.00" stroke="#800000" stroke-width="5.00" fill="#c8c8aa"/>
+  <line x1="120.00" y1="570.00" x2="120.00" y2="540.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="120.00" y1="420.00" x2="120.00" y2="450.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="149.00" y="482.00" font-family="Arial" font-size="37.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">R9</text>
+  <text x="149.00" y="515.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">1k</text>
+  <rect x="408.00" y="450.00" width="24.00" height="90.00" stroke="#800000" stroke-width="5.00" fill="#c8c8aa"/>
+  <line x1="420.00" y1="570.00" x2="420.00" y2="540.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="420.00" y1="420.00" x2="420.00" y2="450.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="449.00" y="482.00" font-family="Arial" font-size="37.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">R10</text>
+  <text x="449.00" y="515.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">1k</text>
+  <ellipse cx="270.00" cy="102.00" rx="12.00" ry="12.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="270.00" y1="114.00" x2="270.00" y2="150.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <text x="270.00" y="83.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">VREF</text>
+  <line x1="270.00" y1="630.00" x2="270.00" y2="660.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="240.00" y1="660.00" x2="300.00" y2="660.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="255.00" y1="675.00" x2="285.00" y2="675.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="267.00" y1="690.00" x2="273.00" y2="690.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <ellipse cx="258.00" cy="390.00" rx="12.00" ry="12.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="246.00" y1="390.00" x2="210.00" y2="390.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <text x="285.00" y="398.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">VA</text>
+  <ellipse cx="558.00" cy="390.00" rx="12.00" ry="12.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="546.00" y1="390.00" x2="510.00" y2="390.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <text x="585.00" y="398.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">VB</text>
+  <ellipse cx="120.00" cy="390.00" rx="6.00" ry="6.00" stroke="#004000" stroke-width="5.00" fill="#004000"/>
+  <ellipse cx="420.00" cy="390.00" rx="6.00" ry="6.00" stroke="#004000" stroke-width="5.00" fill="#004000"/>
+  <ellipse cx="270.00" cy="180.00" rx="6.00" ry="6.00" stroke="#004000" stroke-width="5.00" fill="#004000"/>
+  <ellipse cx="270.00" cy="600.00" rx="6.00" ry="6.00" stroke="#004000" stroke-width="5.00" fill="#004000"/>
+</svg>

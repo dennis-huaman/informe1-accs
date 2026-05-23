@@ -1,0 +1,44 @@
+\subsection{Filtro RFI de entrada}
+
+Las señales $V_a$ y $V_b$ procedentes de la célula de carga pasan cada una por un filtro paso bajo de primer orden antes de entrar a los pines IN+ (pin~3) e IN$-$ (pin~2) del AD623. Cada rama incorpora una resistencia $R_w = \SI{15.9}{\kohm}$ y un condensador de \SI{100}{\nano\F} a masa (dieléctrico de poliéster), con una frecuencia de corte de modo común de:
+\[
+    f_{c,\mathrm{CM}} = \frac{1}{2\pi \cdot R_w \cdot C}
+    = \frac{1}{2\pi \times \SI{15.9}{\kohm}
+        \times \SI{100}{\nano\F}}
+    \approx \SI{100}{\Hz}
+\]
+Adicionalmente, se conecta un condensador diferencial de \SI{1}{\micro\F} directamente entre los pines~2 y~3 del AD623, cuya frecuencia de corte diferencial es:
+\[
+    f_{c,\mathrm{dif}} = \frac{1}{2\pi \cdot 2R_w \cdot C_{\mathrm{dif}}}
+    = \frac{1}{2\pi \times \SI{31.8}{\kohm}
+        \times \SI{1}{\micro\F}}
+    \approx \SI{5.0}{\Hz}
+\]
+Este condensador diferencial reduce el ruido de modo diferencial de alta frecuencia, complementando la atenuación de modo común del filtro de entrada. El uso de condensadores de película de poliéster en ambas ramas es un requisito crítico de diseño: su tolerancia ajustada garantiza el equilibrio de impedancias entre las dos ramas y preserva el CMRR del AD623 \cite{ad623_datasheet}. Un desequilibrio entre los condensadores degradaría directamente la capacidad del amplificador de rechazar el ruido de modo común.
+
+\begin{figure}[H]
+    \centering
+    %\includesvg[width=0.70\textwidth]{figs/CKTO AD623}
+    \caption{Filtro RFI de entrada: resistencias $R_w$ y condensadores
+        a masa en cada rama, y condensador diferencial de
+        \SI{1}{\micro\F} entre los pines de entrada del AD623.}
+    \label{fig:filtro_rfi}
+\end{figure}
+
+\subsection{Red de adaptación de salida}
+
+La salida del AD623 y la tensión de referencia del pedestal no se conectan directamente a masa en la tarjeta DAQ, sino que se adquieren como dos canales independientes (AI0 y AI4) y su diferencia se calcula por \textit{software} en \textit{LabVIEW}. Esta topología permite rechazar la deriva térmica del pedestal, que afecta por igual a ambas señales y queda cancelada al restarlas \cite{ni6001_datasheet}. Para garantizar el equilibrio de impedancias entre ambas líneas, cada una pasa por un filtro RC simétrico antes de entrar a la DAQ:
+\begin{itemize}
+    \item $V_o$ (salida AD623) → $R_f = \SI{13.7}{\kohm}$, $C_f = \SI{2.2}{\micro\F}$ → AI0, con $f_c \approx \SI{5.28}{\Hz}$
+    \item $V_{\mathrm{REF}}$ (pedestal) → $R = \SI{13.7}{\kohm}$, $C = \SI{2.2}{\micro\F}$ → AI4, con $f_c \approx \SI{5.28}{\Hz}$
+\end{itemize}
+El equilibrio de estas impedancias es esencial: cualquier asimetría introduciría una diferencia de fase entre ambas señales que la resta por \textit{software} no podría compensar, degradando el rechazo a la deriva del pedestal \cite{ni6001_datasheet}.
+
+\begin{figure}[H]
+    \centering
+    %\includesvg[width=0.70\textwidth]{figs/CKTO FILTRO}
+    \caption{Red de adaptación de salida: filtros RC simétricos
+        en las líneas $V_o$ y $V_{\mathrm{REF}}$ hacia los
+        canales AI0 y AI4 de la NI USB-6001.}
+    \label{fig:filtro_salida}
+\end{figure}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 660" width="810" height="660">
+  <path d="M120.00,150.00 L120.00,180.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M120.00,570.00 L120.00,600.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M420.00,510.00 L420.00,570.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M420.00,150.00 L420.00,270.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M570.00,390.00 L630.00,390.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M330.00,420.00 L240.00,420.00 L240.00,540.00 L630.00,540.00 L630.00,390.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M660.00,390.00 L630.00,390.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M120.00,330.00 L120.00,360.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M120.00,360.00 L120.00,420.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M330.00,360.00 L120.00,360.00" fill="none" stroke="#004000" stroke-width="5.00"/>
+  <path d="M390.00,315.00 L390.00,465.00 L510.00,390.00 L390.00,315.00 Z" stroke="#800000" stroke-width="5.00" fill="#c8c8aa"/>
+  <line x1="405.00" y1="420.00" x2="423.00" y2="420.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="405.00" y1="360.00" x2="423.00" y2="360.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="414.00" y1="351.00" x2="414.00" y2="369.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="330.00" y1="360.00" x2="390.00" y2="360.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="346.00" y="354.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">3</text>
+  <line x1="330.00" y1="420.00" x2="390.00" y2="420.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="346.00" y="414.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">4</text>
+  <line x1="570.00" y1="390.00" x2="510.00" y2="390.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="540.00" y="384.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">1</text>
+  <line x1="420.00" y1="270.00" x2="420.00" y2="330.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="442.00" y="300.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-90.0,442.00,300.00)">5</text>
+  <line x1="420.00" y1="510.00" x2="420.00" y2="450.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="442.00" y="494.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic" transform="rotate(-90.0,442.00,494.00)">2</text>
+  <text x="512.00" y="274.00" font-family="Arial" font-size="37.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">U3</text>
+  <text x="482.00" y="459.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">MCP6021</text>
+  <rect x="108.00" y="210.00" width="24.00" height="90.00" stroke="#800000" stroke-width="5.00" fill="#c8c8aa"/>
+  <line x1="120.00" y1="330.00" x2="120.00" y2="300.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="120.00" y1="180.00" x2="120.00" y2="210.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="149.00" y="242.00" font-family="Arial" font-size="37.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">R3</text>
+  <text x="149.00" y="275.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">68k</text>
+  <rect x="108.00" y="450.00" width="24.00" height="90.00" stroke="#800000" stroke-width="5.00" fill="#c8c8aa"/>
+  <line x1="120.00" y1="570.00" x2="120.00" y2="540.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <line x1="120.00" y1="420.00" x2="120.00" y2="450.00" stroke="#800000" stroke-width="5.00" fill="none"/>
+  <text x="149.00" y="482.00" font-family="Arial" font-size="37.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">R4</text>
+  <text x="149.00" y="515.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">44k</text>
+  <ellipse cx="120.00" cy="102.00" rx="12.00" ry="12.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="120.00" y1="114.00" x2="120.00" y2="150.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <text x="120.00" y="83.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">VREF</text>
+  <line x1="120.00" y1="600.00" x2="120.00" y2="630.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="90.00" y1="630.00" x2="150.00" y2="630.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="105.00" y1="645.00" x2="135.00" y2="645.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="117.00" y1="660.00" x2="123.00" y2="660.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="420.00" y1="570.00" x2="420.00" y2="600.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="390.00" y1="600.00" x2="450.00" y2="600.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="405.00" y1="615.00" x2="435.00" y2="615.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="417.00" y1="630.00" x2="423.00" y2="630.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <ellipse cx="420.00" cy="102.00" rx="12.00" ry="12.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="420.00" y1="114.00" x2="420.00" y2="150.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <text x="420.00" y="83.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">5V</text>
+  <path d="M690.00,378.00 L690.00,402.00 L720.00,390.00 L690.00,378.00 Z" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <line x1="690.00" y1="390.00" x2="660.00" y2="390.00" stroke="#004000" stroke-width="5.00" fill="none"/>
+  <text x="735.00" y="398.00" font-family="Arial" font-size="25.0" font-weight="normal" font-style="normal" fill="#000000" text-anchor="start" dominant-baseline="alphabetic">REF</text>
+  <ellipse cx="630.00" cy="390.00" rx="6.00" ry="6.00" stroke="#004000" stroke-width="5.00" fill="#004000"/>
+  <ellipse cx="120.00" cy="360.00" rx="6.00" ry="6.00" stroke="#004000" stroke-width="5.00" fill="#004000"/>
+</svg>
