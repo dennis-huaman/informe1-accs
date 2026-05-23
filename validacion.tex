@@ -3,56 +3,93 @@
 El ajuste del instrumento virtual se llevó a cabo mediante un procedimiento de calibración lineal de dos puntos. Este proceso permitió corregir los errores sistemáticos de la etapa de acondicionamiento analógico y establecer la trazabilidad de las medidas.
 
 \begin{enumerate}
-    \item \textbf{Fijación del Cero Metrológico (\textit{Tara}):} Con el sistema mecánico en reposo y la plataforma de pesaje completamente vacía, se procedió a la captura de la tensión residual. Esta medición en crudo absorbe el desequilibrio estático del puente de Wheatstone, las tensiones de \textit{offset} del amplificador de instrumentación AD623 y el pedestal de referencia de 1.607~voltios. El algoritmo en \textit{LabVIEW} almacena este valor como el cero del sistema, restándolo de forma sistemática en las lecturas subsecuentes.
-    
-    \item \textbf{Ajuste del \textit{Span} (Pendiente):} Posteriormente, se aplicó sobre la célula de carga una masa de referencia aproximado de 1.000~kg, empleado como peso patrón. Al estabilizarse la señal, el \textit{software} registró la tensión neta correspondiente al fondo de escala operativo y calculó de forma automática el factor de ganancia global (pendiente de la recta de calibración).
+    \item \textbf{Fijación del Cero Metrológico (\textit{Tara}):} Con el sistema mecánico en reposo y la plataforma de pesaje completamente vacía, se procedió a la captura de la tensión residual. Esta medición en crudo absorbe el desequilibrio estático del puente de Wheatstone, las tensiones de \textit{offset} del amplificador de instrumentación AD623 y el pedestal de referencia medido de \SI{1.597}{\V}. El algoritmo en \textit{LabVIEW} almacena este valor como el cero del sistema, restándolo de forma sistemática en las lecturas subsecuentes.
+
+    \item \textbf{Ajuste del \textit{Span} (Pendiente):} Posteriormente, se aplicó sobre la célula de carga una masa patrón nominal de \SI{1.000}{\kg}. Al estabilizarse la señal, el \textit{software} registró la tensión neta correspondiente al fondo de escala operativo y calculó de forma automática el factor de ganancia global, es decir, la pendiente de la recta de calibración.
 \end{enumerate}
 
-La sensibilidad empírica resultante del proceso de calibración arrojó un valor de 642.49~\si{\frac{V}{g}}.
+La sensibilidad empírica resultante del proceso de calibración arrojó un valor de \SI{643.42}{\g\per\V}, mientras que el ajuste implementado en LabVIEW entregó \SI{642.49}{\g\per\V}. La diferencia relativa entre ambos valores es de aproximadamente 0.145\%, lo que resulta consistente con el redondeo empleado y con las pequeñas variaciones propias de la medición experimental.
 
-Este valor se calculó teóricamente de la siguiente manera, se tomaron dos medidas:
+Este factor se obtuvo a partir de dos mediciones:
 
 \begin{itemize}
     \item $V_{diff}$ (sin carga): -1.17588 \si{V}
     \item $V_{diff}$ (con carga de 1 \si{kg}): 0.378307 \si{V}
 \end{itemize}
 
-Hallamos la sensibilidad del sistema con esos valores: 
+La sensibilidad del sistema se halló con esos valores:
 
 \begin{itemize}
     \item Sensibilidad en \si{\frac{V}{g}}
-    $S=\frac{0.378307 - (-1.17588)}{1000} = 0.001554 $ \si{\frac{V}{g}}
+          $$S=\frac{0.378307 - (-1.17588)}{1000} = 0.001554  \si{\frac{V}{g}}$$
     \item Sensibilidad en \si{\frac{g}{V}}
-    $S=\frac{1000}{0.378307 - (-1.17588)} = 643.42 $ \si{\frac{g}{V}}
+          $$S=\frac{1000}{0.378307 - (-1.17588)} = 643.42  \si{\frac{g}{V}}$$
 \end{itemize}
 
 
 
 \subsection{Análisis de Desempeño y Caracterización Metrológica}
 
-Para evaluar de manera crítica el comportamiento dinámico y estático del sistema, se realizó una caracterización completa que abarca el rango dinámico, la linealidad y la estabilidad temporal de la lectura.
+Para evaluar de manera crítica el comportamiento dinámico y estático del sistema, se realizó una caracterización del rango efectivamente ensayado, abarcando el contraste sin carga, la respuesta en masa y la estabilidad temporal de la lectura.
 
 \subsubsection{Contraste Empírico sin Carga}
-Antes de la supresión por \textit{software} mediante la tara, se midió físicamente la tensión sin carga directamente a la salida del amplificador de instrumentación, registrándose un valor experimental de [COMPLETAR]~V. Este resultado se contrastó con el límite teórico de seguridad calculado en el análisis de tolerancias (\textit{Worst-Case DC}) de la sección 2. Dado que el valor experimental se encuentra notablemente por debajo del umbral de saturación previsto en el peor escenario de polaridad, se demuestra matemáticamente la validez del pedestal de referencia de 1.607~V introducido para evitar el corte en el canal de adquisición.
+Antes de la supresión por \textit{software} mediante la tara, se midió físicamente la tensión sin carga directamente a la salida del amplificador de instrumentación, registrándose un valor experimental de \SI{0.42}{\V}. Este resultado se contrastó con el límite teórico de seguridad calculado en el análisis de tolerancias (\textit{Worst-Case DC}) de la sección 2, cuyo intervalo estimado fue $[\SI{0.73798}{\V}, \SI{2.4803}{\V}]$. La medición experimental se situó \SI{317.98}{\milli\V} por debajo del límite inferior previsto, lo que evidencia una desviación entre el modelo simplificado y el comportamiento real del montaje. No obstante, la salida permanece por encima del raíl inferior y confirma que el pedestal de referencia medido, de \SI{1.597}{\V}, evitó la saturación a \SI{0}{\V} del canal analógico. La desviación respecto al pedestal fue de \SI{-1.177}{\V}, valor coherente con la tensión diferencial residual compensada posteriormente mediante la rutina de tara en \textit{LabVIEW}.
 
 \subsubsection{Linealidad y Rango Dinámico}
-El rango dinámico verificado de la báscula se extiende desde los 0~g hasta un límite superior de carga de 5~kg, asegurando márgenes de seguridad frente a la saturación del ADC de la tarjeta de adquisición de datos (DAQ).
+La célula de carga utilizada posee un fondo de escala nominal de \SI{5}{\kg}; sin embargo, la validación experimental documentada en este informe solo cubre el intervalo de \SI{0}{\g} a \SI{1.5}{\kg}, que corresponde a las masas efectivamente ensayadas en el laboratorio. En consecuencia, la tabla \ref{tab:linealidad} debe interpretarse como una verificación de la respuesta del sistema dentro del rango disponible y no como una validación exhaustiva de todo el fondo de escala nominal. Los puntos de \SI{0}{\g} y \SI{1000}{\g} corresponden a la tara y al peso patrón usados durante la calibración, mientras que el punto de \SI{1500}{\g} aporta la comprobación adicional más cercana al extremo superior del intervalo ensayado.
 
-El error de linealidad máximo registrado fue de [COMPLETAR]~g, confirmando un comportamiento altamente lineal en todo el rango de operación debido a la simetría simétrica de la red de filtros analógicos y al equilibrio de impedancias preservado.
+Para cada punto de ensayo, el error absoluto se calculó como la diferencia en valor absoluto entre la masa patrón aplicada y la lectura entregada por el instrumento virtual:
+
+\[
+    e_{\mathrm{abs},i} = \left| m_{\mathrm{lectura},i} - m_{\mathrm{patron},i} \right|
+\]
+
+El error relativo porcentual se obtuvo normalizando el error absoluto respecto a la masa patrón correspondiente:
+
+\[
+    e_{\mathrm{rel},i} = \frac{\left| m_{\mathrm{lectura},i} - m_{\mathrm{patron},i} \right|}{m_{\mathrm{patron},i}} \times 100
+\]
+
+Finalmente, el error de linealidad máximo del sistema se definió como el mayor error absoluto observado entre todos los puntos de validación considerados:
+
+\[
+    e_{\mathrm{lin,max}} = \max_i \left( e_{\mathrm{abs},i} \right)
+\]
+
+En el punto de \SI{0}{\g}, el error relativo no está estrictamente definido por involucrar división entre cero; por ello, en la tabla se consigna \SI{0}{\percent} al corresponder dicho punto al estado de tara y referencia del sistema.
+
+
+
+\begin{table}[H]
+    \centering
+    \caption{Resultados experimentales en los puntos de calibración y verificación ensayados.}
+    \label{tab:linealidad}
+    \begin{tabular}{cccc}
+        \hline
+        \textbf{Masa Patrón (g)} & \textbf{LabVIEW (g)} & \textbf{Error Absoluto (g)} & \textbf{Error Relativo (\%)} \\ \hline
+        0.0                      & 0.0                  & 0.0                         & 0.00\%                       \\
+        1000.0                   & 996.54               & 3.46                        & 0.346\%                      \\
+        1500.0                   & 1502.75              & 2.75                        & 0.183\%                      \\ \hline
+    \end{tabular}
+\end{table}
+
+Si se toman los puntos de la tabla como conjunto de contraste, la mayor desviación absoluta observada fue de \SI{3.46}{\g}. Este resultado es compatible con una respuesta aproximadamente lineal en el intervalo ensayado de \SIrange{0}{1500}{\g}, pero no basta por sí solo para certificar la linealidad en toda la capacidad nominal de \SI{5}{\kg}.
 
 \subsubsection{Estabilidad de la Lectura y Resolución Efectiva}
-El impacto del promediado estadístico implementado en el instrumento virtual se demostró empíricamente al contrastar la señal en crudo frente a la señal filtrada.
+El instrumento virtual adquiere bloques de 32 muestras a \SI{128}{\Hz} y entrega su media aritmética, por lo que la estabilidad de la lectura depende directamente del promediado digital aplicado tras la conversión A/D.
 
-Tras activar la ventana de promediado por bloques de 32 muestras en \textit{LabVIEW}, se logró una disminución  de las fluctuaciones de alta frecuencia, demostrando una mejora en la resolución efectiva del sistema sin comprometer el tiempo de respuesta demandado para el pesaje estático.
+De acuerdo con el análisis del capítulo 4, este promediado reduce idealmente el ruido equivalente de salida desde \SI{470.7}{\micro\V} RMS hasta \SI{83.2}{\micro\V} RMS, lo que corresponde aproximadamente a \SI{0.55}{\milli\V} pico a pico. Expresado en masa, ello equivale a una resolución efectiva del orden de \SI{0.34}{\g} si se adopta la sensibilidad teórica, o de \SI{0.35}{\g} si se emplea la sensibilidad experimental obtenida en la calibración.
+
+Experimentalmente, esta reducción del ruido se manifestó como una lectura visualmente más estable y con menor dispersión instantánea que la señal en crudo observada en el panel frontal de \textit{LabVIEW}. No obstante, dado que no se registró una serie temporal para estimar desviación estándar, deriva o banda pico a pico experimental, esta mejora debe considerarse una verificación cualitativa coherente con el modelo analítico, y no una caracterización estadística completa de estabilidad.
 
 \subsection{Montaje Físico y Disposición Mecánica}
 
-El montaje físico final se muestra en la figura \ref{fig:montaje_hardware} muestra la implementación de la etapa analógica en la placa de pruebas, caracterizada por un ruteado simétrico para proteger el CMRR. Por otro lado, la figura \ref{fig:celda_carga} ilustra la disposición mecánica de la célula de carga acoplada a la estructura rígida de soporte.
+El montaje físico final se muestra en la figura \ref{fig:montaje_hardware}, la implementación de la etapa analógica en la placa de pruebas. Por otro lado, la figura \ref{fig:celda_carga} ilustra la disposición mecánica de la célula de carga acoplada a la estructura rígida de soporte.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{figs/montaje_hardware.png}
-    \caption{Montaje físico real de la etapa de acondicionamiento eléctrico en la placa de pruebas.}
+    \caption{Montaje físico real de la etapa de acondicionamiento en la placa de pruebas.}
     \label{fig:montaje_hardware}
 \end{figure}
 
@@ -64,11 +101,11 @@ El montaje físico final se muestra en la figura \ref{fig:montaje_hardware} mues
     \label{fig:celda_carga}
 \end{figure}
 
-
+Por último se muestra el montaje final del sistema completo, integrando la etapa de acondicionamiento analógico, la célula de carga y la tarjeta DAQ, listo para su validación metrológica y pruebas experimentales (ver figura \ref{fig:montaje_final}).
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.65\textwidth]{figs/montaje_final.jpeg}
+    \includegraphics[width=0.85\textwidth]{figs/montaje_final.jpeg}
     \caption{Montaje final.}
-    \label{fig:pedestal}
+    \label{fig:montaje_final}
 \end{figure}

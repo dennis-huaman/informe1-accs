@@ -1,4 +1,153 @@
 \subsection{Balance de error dinámico (límite analógico)}
 
-MMmmm
-El límite físico de detección del sistema está determinado por el ruido intrínseco del hardware, compuesto fundamentalmente por el ruido térmico de las resistencias y el ruido del amplificador de instrumentación.
+El límite físico de detección del sistema está determinado por el ruido intrínseco del hardware, compuesto principalmente por el ruido térmico de Johnson-Nyquist de la red diferencial de entrada y por el ruido de tensión referido a la entrada del amplificador de instrumentación AD623. Dado que la banda útil queda fijada por el filtro diferencial de entrada, cuya frecuencia de corte es $f_{c,\mathrm{dif}} \approx \SI{5.0}{\Hz}$, el ancho de banda equivalente de ruido (NEB) para un filtro de primer orden es:
+
+\[
+    B_{\mathrm{NEB}} = \frac{\pi}{2} f_{c,\mathrm{dif}}
+    = \frac{\pi}{2} \cdot \SI{5.0}{\Hz}
+    \approx \SI{7.85}{\Hz}
+\]
+
+La contribución térmica de las dos resistencias del filtro diferencial, modeladas como una resistencia equivalente de $2R_w = \SI{31.8}{\kilo\ohm}$, se calcula como:
+
+\[
+    V_{n,R,\mathrm{RMS}} = \sqrt{4kT(2R_w)B_{\mathrm{NEB}}}
+\]
+
+Asumiendo una temperatura ambiente de \SI{300}{\kelvin}, se obtiene:
+
+\[
+    V_{n,R,\mathrm{RMS}} \approx \SI{64.3}{\nano\V}
+\]
+
+Por otra parte, el ruido propio del AD623 debe evaluarse con una especificación de baja frecuencia, ya que la señal útil del sistema queda confinada a una banda de unos pocos hercios. Por ello no se emplea la densidad espectral de ruido a \SI{1}{\kilo\Hz}, sino la especificación RTI del fabricante en la banda de \SIrange{0.1}{10}{\Hz}, cuyo valor típico es \SI{1.5}{\micro\V} pico a pico para $G=1000$ \cite{ad623_datasheet}. Dado que la ganancia implementada en el sistema es $G \approx \SI{1993.032}{\V\per\V}$, es decir, superior a \num{1000}, se adopta esta especificación de alta ganancia como aproximación representativa del ruido propio del amplificador en la banda útil de medida.
+
+Para un ruido gaussiano de media nula, el valor eficaz coincide con la desviación típica de la distribución. En consecuencia, la conversión de ruido eficaz a ruido pico a pico no es única, sino que depende de la probabilidad de cobertura adoptada. Si se asume una cobertura estadística de $p=99.9\%$, el valor pico a pico puede aproximarse como:
+
+\[
+    V_{n,\mathrm{p-p}}(p) = 2\sqrt{2}\,\operatorname{erf}^{-1}(p)\,V_{n,\mathrm{RMS}}
+\]
+
+Sustituyendo $p=0.999$ se obtiene:
+
+\[
+    2\sqrt{2}\,\operatorname{erf}^{-1}(0.999) \approx 6.58 \approx 6.6
+\]
+
+Por este motivo se adopta el factor de cresta estadístico de 6.6. Como la suma en cuadratura de contribuciones de ruido debe realizarse en términos eficaces, el valor pico a pico proporcionado por el fabricante se convierte primero a ruido RMS aplicando la relación inversa. Así, la contribución eficaz del AD623 referida a la entrada es:
+
+\[
+    V_{n,\mathrm{AD623,RMS}} \approx \frac{\SI{1.5}{\micro\V}}{6.6}
+    \approx \SI{0.227}{\micro\V}
+\]
+
+La suma en cuadratura de esta contribución con el ruido térmico de la red de entrada proporciona el ruido total referido a la entrada:
+
+\[
+    V_{n,\mathrm{RTI,RMS}} = \sqrt{V_{n,R,\mathrm{RMS}}^{2} + V_{n,\mathrm{AD623,RMS}}^{2}}
+    = \sqrt{(\SI{64.3}{\nano\V})^{2} + (\SI{0.227}{\micro\V})^{2}}
+    \approx \SI{0.236}{\micro\V}
+\]
+
+Aplicando la ganancia real del sistema, el ruido eficaz referido a la salida vale:
+
+\[
+    V_{n,\mathrm{out,RMS}} = G \cdot V_{n,\mathrm{RTI,RMS}}
+    = \SI{1993.032}{\V\per\V} \cdot \SI{0.236}{\micro\V}
+    \approx \SI{470.7}{\micro\V}
+\]
+
+Reaplicando el mismo factor estadístico, el ruido pico a pico estimado a la salida resulta:
+
+\[
+    V_{n,\mathrm{out,p-p}} \approx 6.6 \cdot V_{n,\mathrm{out,RMS}}
+    \approx \SI{3.11}{\milli\V}
+\]
+
+Tomando la sensibilidad teórica del hardware, obtenida en la etapa de acondicionamiento estático,
+
+\[
+    S_{\mathrm{teo}} = \SI{1.633}{\milli\V\per\g}
+\]
+
+el límite físico de detección asociado al ruido analógico es:
+
+\[
+    m_{\min,\mathrm{teo}} = \frac{V_{n,\mathrm{out,p-p}}}{S_{\mathrm{teo}}}
+    = \frac{\SI{3.11}{\milli\V}}{\SI{1.633}{\milli\V\per\g}}
+    \approx \SI{1.90}{\g}
+\]
+
+Si, en cambio, se adopta la sensibilidad experimental obtenida en la calibración,
+
+\[
+    S_{\mathrm{exp}} = \SI{1.554}{\milli\V\per\g}
+\]
+
+el límite correspondiente resulta:
+
+\[
+    m_{\min,\mathrm{exp}} = \frac{V_{n,\mathrm{out,p-p}}}{S_{\mathrm{exp}}}
+    = \frac{\SI{3.11}{\milli\V}}{\SI{1.554}{\milli\V\per\g}}
+    \approx \SI{2.00}{\g}
+\]
+
+La proximidad entre los valores $m_{\min,\mathrm{teo}}$ y $m_{\min,\mathrm{exp}}$ indica que la estimación del límite físico de detección es robusta frente a la ligera diferencia entre la sensibilidad teórica del modelo y la sensibilidad empírica obtenida durante la calibración.
+
+Bajo la hipótesis de ruido no correlacionado entre muestras, el promediado por bloques de 32 muestras reduce la desviación eficaz aproximadamente en un factor $\sqrt{32}$. Por tanto, el ruido eficaz y el ruido pico a pico equivalentes tras el promediado pueden estimarse como:
+
+\[
+    V_{n,\mathrm{avg,RMS}} \approx \frac{V_{n,\mathrm{out,RMS}}}{\sqrt{32}}
+    \approx \SI{83.2}{\micro\V}
+\]
+
+\[
+    V_{n,\mathrm{avg,p-p}} \approx 6.6 \cdot V_{n,\mathrm{avg,RMS}}
+    \approx \SI{0.55}{\milli\V}
+\]
+
+lo que conduce a límites analógicos efectivos de:
+
+\[
+    m_{\min,\mathrm{teo,32}} = \frac{\SI{0.55}{\milli\V}}{\SI{1.633}{\milli\V\per\g}}
+    \approx \SI{0.34}{\g}
+\]
+
+\[
+    m_{\min,\mathrm{exp,32}} = \frac{\SI{0.55}{\milli\V}}{\SI{1.554}{\milli\V\per\g}}
+    \approx \SI{0.35}{\g}
+\]
+
+Estos resultados muestran que el límite físico de resolución del hardware, antes del promediado digital, se sitúa aproximadamente en el entorno de \SI{2}{\g}, mientras que el promediado por bloques permite reducirlo de forma ideal a unas pocas décimas de gramo.
+
+\subsection{Análisis de cuantización}
+
+La tarjeta NI USB-6001 dispone de un convertidor analógico-digital de 14 bits y un rango nominal de entrada de $\pm\SI{10}{\V}$ \cite{ni6001_datasheet}. En términos físicos, ello significa que el convertidor divide un intervalo total de \SI{20}{\V} en $2^{14}$ niveles discretos. Aunque en el instrumento virtual se configuró una ventana de trabajo entre \SI{0}{\V} y \SI{3.6}{\V}, para la comparación teórica con el límite de cuantización se adopta el rango nominal especificado por el fabricante, pues es el que fija la resolución intrínseca del ADC. Por tanto, el valor del bit menos significativo es:
+
+\[
+    \mathrm{LSB} = \frac{\SI{20}{\V}}{2^{14}}
+    = \frac{\SI{20}{\V}}{16384}
+    \approx \SI{1.2207}{\milli\V}
+\]
+
+Expresado en masa mediante la sensibilidad teórica del sistema, este escalón equivale a:
+
+\[
+    \mathrm{LSB}_{\mathrm{teo}} = \frac{\SI{1.2207}{\milli\V}}{\SI{1.633}{\milli\V\per\g}}
+    \approx \SI{0.75}{\g}
+\]
+
+Si se emplea la sensibilidad experimental calibrada, el valor equivalente es:
+
+\[
+    \mathrm{LSB}_{\mathrm{exp}} = \frac{\SI{1.2207}{\milli\V}}{\SI{1.554}{\milli\V\per\g}}
+    \approx \SI{0.79}{\g}
+\]
+
+La comparación entre el ruido analógico pico a pico estimado y el escalón de cuantización muestra que:
+
+\[
+    V_{n,\mathrm{out,p-p}} \approx \SI{3.11}{\milli\V} > \mathrm{LSB} \approx \SI{1.2207}{\milli\V}
+\]
+
+Por tanto, el ruido analógico residual ya supera ligeramente un LSB del convertidor. Esto implica que la señal muestreada no queda fijada de manera rígida a un único código digital, sino que fluctúa entre códigos adyacentes debido al propio ruido analógico. En estas condiciones, el promediado estadístico por \textit{software} resulta físicamente útil: en lugar de promediar valores cuantizados idénticos, promedia realizaciones ligeramente distintas de la señal y reduce su varianza efectiva. En consecuencia, la estrategia de adquisición de 32 muestras a \SI{128}{\Hz}, seguida de su media aritmética, queda justificada tanto desde el punto de vista del ruido analógico como desde el punto de vista de la cuantización.

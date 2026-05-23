@@ -21,7 +21,7 @@ Se utilizó el bloque \textit{DAQ Assistant}, el cual está configurado para int
     \label{fig:diferencial}
 \end{figure}
 
-Este bloque adquiere la señal de tensión analógica, parametrizando un rango de tensión de $\pm3.6$ V] para maximizar la resolución del convertidor. La lectura de la información se realiza en paquetes definidos por una frecuencia de muestreo (\textit{Rate}) de 128 Hz y un número de muestras (\textit{Samples to Read}) establecido en exactamente 32 muestras. 
+Este bloque adquiere la señal de tensión analógica, parametrizando un rango de tensión de $\pm3.6$ V] para maximizar la resolución del convertidor. La lectura de la información se realiza en paquetes definidos por una frecuencia de muestreo (\textit{Rate}) de 128 Hz y un número de muestras (\textit{Samples to Read}) establecido en exactamente 32 muestras.
 
 Esta ventana de promediado estadístico por software se justifica como el punto de operación óptimo del instrumento virtual: un número inferior de muestras resultaría en un filtrado insuficiente del ruido térmico y de cuantización, provocando inestabilidad en el dígito menos significativo de la lectura física; por el contrario, una ventana mayor introduciría una latencia considerable en el bucle, degradando el tiempo de respuesta dinámico de la báscula frente a variaciones súbitas de carga. Los datos dinámicos obtenidos en esta ventana pasan de forma directa por un bloque estadístico de media aritmética (\textit{Mean}), entregando un único valor de tensión estabilizado para las etapas posteriores de procesamiento matemático.
 
@@ -31,7 +31,7 @@ Para mantener las constantes de calibración actualizadas y disponibles ciclo tr
 
 \begin{itemize}
     \item \textbf{Registro Superior (Factor de \textit{Span}):} Inicializado con una constante de valor 1, almacena el multiplicador dinámico que convierte la magnitud eléctrica neta a unidades físicas de masa (gramos).
-    \item \textbf{Registro Inferior (Tensión de Tara):} Inicializado en 0 V, retiene el valor de la tensión residual medida sin carga, el cual se corresponde con el cero del sistema.  
+    \item \textbf{Registro Inferior (Tensión de Tara):} Inicializado en 0 V, retiene el valor de la tensión residual medida sin carga, el cual se corresponde con el cero del sistema.
 \end{itemize}
 
 En la figura \ref{fig:estructuras_case} se detalla la lógica interna de almacenamiento según los estados de control del operador.
@@ -60,12 +60,12 @@ En la figura \ref{fig:estructuras_case} se detalla la lógica interna de almacen
 El software cuenta con un algoritmo de calibración lineal de dos puntos gestionado por estructuras \textit{Case}. Estas rutinas son accionadas a voluntad por el usuario a través del Panel Frontal:
 
 \begin{itemize}
-    \item \textbf{Establecimiento del Cero (Tara):} Controlado por la estructura inferior (ver figura \ref{fig:establecer_cero_labview}). Al recibir un comando lógico verdadero (\textit{True}) tras pulsar el botón de tara, el programa captura la tensión promedio instantánea de ese ciclo exacto y la sobrescribe en el \textit{Shift Register} inferior. En su estado inactivo (\textit{False}), el último valor registrado simplemente atraviesa la estructura para mantenerse intacto en la memoria dinámica.  
+    \item \textbf{Establecimiento del Cero (Tara):} Controlado por la estructura inferior (ver figura \ref{fig:establecer_cero_labview}). Al recibir un comando lógico verdadero (\textit{True}) tras pulsar el botón de tara, el programa captura la tensión promedio instantánea de ese ciclo exacto y la sobrescribe en el \textit{Shift Register} inferior. En su estado inactivo (\textit{False}), el último valor registrado simplemente atraviesa la estructura para mantenerse intacto en la memoria dinámica.
     \item \textbf{Calibración del \textit{Span}:} Controlada por la estructura superior (ver figura \ref{fig:establecer_span}). Al introducir el valor de la masa patrón en la interfaz y activar esta rutina, el programa recalcula la pendiente de medición. Obtiene la tensión neta bajo carga y ejecuta la siguiente relación matemática:
 
-    $$Factor=\frac{Masa_{referencia}}{V_{leido}-V_{tara}}$$
+          $$Factor=\frac{\text{Masa}_{\text{referencia}}}{V_{leido}-V_{tara}}$$
 
-    El resultado numérico de esta operación sobrescribe el registro de desplazamiento superior, actualizando la sensibilidad global del instrumento de manera instantánea.
+          El resultado numérico de esta operación sobrescribe el registro de desplazamiento superior, actualizando la sensibilidad global del instrumento de manera instantánea.
 \end{itemize}
 
 \begin{figure}[H]

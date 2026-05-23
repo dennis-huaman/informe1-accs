@@ -1,16 +1,23 @@
 El sistema diseñado permite medir la masa de recipientes de hasta
 \SI{1.5}{\kg} mediante una célula de carga resistiva de aluminio de
-\SI{5}{\kg} de capacidad nominal \cite{loadcell_datasheet}.
-La señal diferencial generada por el puente de Wheatstone se
-acondiciona, digitaliza y procesa para obtener una lectura estable
-en gramos.
+\SI{5}{\kg} de capacidad nominal \cite{loadcell_datasheet}. La
+arquitectura general se organiza en cinco bloques funcionales:
+excitación del puente, sensor, acondicionamiento analógico,
+digitalización y procesamiento por \textit{software}. La referencia
+MCP1541 proporciona la tensión estable de excitación, la célula de
+carga genera la señal diferencial proporcional a la masa aplicada,
+el acondicionamiento analógico adapta dicha señal mediante filtrado,
+pedestal y amplificación, la tarjeta NI USB-6001 realiza la
+adquisición en el dominio digital y, finalmente, \textit{LabVIEW}
+ejecuta las rutinas de tara, calibración y visualización. El
+diagrama de bloques general del sistema se muestra en la figura
+\ref{fig:bloques}.
 
-% (excitación -> sensor -> filtro RFI -> AD623 -> DAQ -> LabVIEW)
 \begin{figure}[H]
-    \centering
-    %\includegraphics[width=0.85\textwidth]{figs/diagrama_bloques.png}
-    \caption{Arquitectura general del sistema de pesaje a nivel de bloques.}
-    \label{fig:bloques}
+      \centering
+      \includegraphics[width=1\textwidth]{figs/diagrama_bloques.png}
+      \caption{Arquitectura general del sistema de pesaje a nivel de bloques.}
+      \label{fig:bloques}
 \end{figure}
 
 \subsection{Objetivos}
@@ -20,24 +27,33 @@ báscula de precisión orientada al pesaje estático. De forma más
 específica, se persigue:
 
 \begin{itemize}
-    \item Dimensionar analíticamente cada etapa del acondicionamiento
-          de señal.
-    \item Garantizar márgenes de seguridad frente a la saturación
-          del amplificador.
-    \item Validar el modelo matemático con medidas reales en la
-          \textit{protoboard}.
+      \item Alcanzar una lectura precisa y estable en el rango de
+            \SI{0}{\g} a \SI{1500}{\g}.
+      \item Dimensionar analíticamente cada etapa del acondicionamiento
+            de señal con criterios de robustez frente a saturación,
+            deriva y ruido.
+      \item Preservar el rechazo al modo común del sistema mediante
+            una cadena de adquisición y filtrado simétrica.
+      \item Validar metrológicamente el modelo analítico mediante
+            medidas reales sobre la \textit{protoboard} y el
+            instrumento virtual.
 \end{itemize}
 
 \subsection{Requisitos técnicos}
 
 \begin{itemize}
-    \item Rango de pesaje: de \SI{0}{\g} a \SI{1500}{\g}.
-    \item Tensión de excitación estable de \SI{4.096}{\V}
-          (MCP1541) \cite{microchip_mcp1525_2012}.
-    \item Pedestal de referencia de \SI{1.0}{\V} para evitar
-          saturación por desequilibrio negativo (MCP6021) \cite{mcp6021_datasheet}.
-    \item Frecuencia de corte del filtro diferencial RFI próxima
-          a \SI{5}{\Hz}.
-    \item Adquisición en modo diferencial en la NI USB-6001
-          \cite{ni6001_datasheet}.
+      \item Rango de pesaje: de \SI{0}{\g} a \SI{1500}{\g}.
+      \item Tensión de excitación estable de \SI{4.096}{\V}
+            (MCP1541) \cite{microchip_mcp1525_2012}.
+      \item Pedestal de referencia de \SI{1.0}{\V} para evitar
+            saturación por desequilibrio negativo (MCP6021) \cite{mcp6021_datasheet}.
+      \item Frecuencia de corte del filtro diferencial RFI próxima
+            a \SI{5}{\Hz} para limitar el ruido de alta frecuencia.
+      \item Protección del CMRR mediante el equilibrio de impedancias
+            en el filtro de entrada y la adquisición en modo
+            diferencial con la NI USB-6001 \cite{ni6001_datasheet}.
+      \item Superación del límite de ruido analógico mediante
+            filtrado analógico y promediado estadístico por
+            \textit{software}, con el fin de mejorar la resolución
+            efectiva de la medida.
 \end{itemize}

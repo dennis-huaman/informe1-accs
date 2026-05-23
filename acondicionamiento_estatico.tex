@@ -1,12 +1,12 @@
 \subsection{Generación de la tensión de excitación}
 
-Se emplea la referencia MCP1541 para proporcionar una excitación estable de \SI{4.096}{\V} al puente de Wheatstone, con una tolerancia de \(\pm\SI{0.1}{\percent}\) y un coeficiente de temperatura de \SI{50}{ppm\per\celsius} \cite{mcp6021_datasheet}. El circuito incorpora dos condensadores de desacoplo en el pin de salida para atenuar transitorios y ruido de alta frecuencia.
+Se empleó el voltaje de referencia con el circuito integrado MCP1541 para proporcionar una excitación estable de \SI{4.096}{\V} al puente de Wheatstone, con una tolerancia de \(\pm\SI{0.1}{\percent}\) y un coeficiente de temperatura de \SI{50}{ppm\per\celsius} \cite{microchip_mcp1525_2012}. El circuito incorpora dos condensadores de desacoplo en el pin de salida para atenuar transitorios y ruido de alta frecuencia, tal como se muestra en la figura \ref{fig:vref}.
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        %\includesvg[width=\textwidth]{figs/CKTO VREF}
+        \includegraphics[width=\textwidth]{figs/CKTO VREF.png}
         \caption{Esquema del circuito.}
         \label{fig:vref_esquema}
     \end{subfigure}
@@ -23,9 +23,63 @@ Se emplea la referencia MCP1541 para proporcionar una excitación estable de \SI
 
 El valor medido experimentalmente es $V_{\mathrm{REF}} = \SI{4.1}{\V}$, lo que representa una desviación del \SI{0.097}{\percent} respecto al nominal \cite{microchip_mcp1525_2012}, dentro de la tolerancia especificada por el fabricante.
 
+\subsection{Diseño de la ganancia de la etapa de amplificación}
+
+La célula de carga empleada presenta una sensibilidad nominal de \SI{1}{\milli\V\per\V} a su fondo de escala nominal de \SI{5}{\kg}. Con la excitación estable de \SI{4.096}{\V} proporcionada por la referencia MCP1541, la salida diferencial ideal del sensor a fondo de escala nominal es:
+
+\[
+    V_{\mathrm{FSO,5kg}} = V_{\mathrm{EXC}} \cdot S
+    = \SI{4.096}{\V} \cdot \SI{1}{\milli\V\per\V}
+    = \SI{4.096}{\milli\V}
+\]
+
+Dado que el rango operativo exigido para la báscula es de \SI{0}{\g} a \SI{1500}{\g}, la salida diferencial máxima teórica del sensor dentro de dicho rango es:
+
+\[
+    V_{\mathrm{FSO,1.5kg}} = \frac{\SI{1.5}{\kg}}{\SI{5}{\kg}} \cdot V_{\mathrm{FSO,5kg}}
+    = \SI{1.2288}{\milli\V}
+\]
+
+Tomando como referencia el rango diferencial configurado en la tarjeta DAQ, de $\pm\SI{3.6}{\V}$, la ganancia teórica ideal para aprovechar una excursión útil de \SI{3.6}{\V} sería:
+
+\[
+    G_{\mathrm{ideal}} = \frac{\SI{3.6}{\V}}{\SI{1.2288}{\milli\V}}
+    \approx \SI{2929.69}{\V\per\V}
+\]
+
+A partir de la ecuación del AD623 \cite{ad623_datasheet},
+
+\[
+    G = 1 + \frac{\SI{100}{\kilo\ohm}}{R_G}
+\]
+
+la resistencia ideal de ganancia resultaría:
+
+\[
+    R_{G,\mathrm{ideal}} = \frac{\SI{100}{\kilo\ohm}}{G_{\mathrm{ideal}} - 1}
+    \approx \SI{34.14}{\ohm}
+\]
+
+Sin embargo, la implementación final adoptó una resistencia comercial de la serie E96 de $R_G = \SI{50.2}{\ohm}$, con lo que la ganancia real quedó fijada en:
+
+\[
+    G_{\mathrm{real}} = 1 + \frac{\SI{100}{\kilo\ohm}}{\SI{50.2}{\ohm}}
+    \approx \SI{1993.032}{\V\per\V}
+\]
+
+Esta elección reduce la ganancia respecto al valor ideal y añade margen frente a las desviaciones de continua analizadas en el estudio de peor caso, evitando forzar la etapa analógica al límite de excursión. La sensibilidad teórica resultante del sistema es:
+
+\[
+    S_{\mathrm{teo}} = \frac{V_{\mathrm{FSO,5kg}} \cdot G_{\mathrm{real}}}{\SI{5000}{\g}}
+    = \frac{\SI{4.096}{\milli\V} \cdot \SI{1993.032}{\V\per\V}}{\SI{5000}{\g}}
+    \approx \SI{1.633}{\milli\V\per\g}
+\]
+
+En consecuencia, la sensibilidad teórica equivale también a \SI{1.633}{\V\per\kg}, valor útil para contrastar posteriormente la pendiente experimental obtenida durante la calibración.
+
 \subsection{Generación del pedestal de referencia}
 
-Sin un nivel de referencia en el pin REF del AD623, cualquier desequilibrio de polaridad negativa en el puente empujaría la salida del amplificador hacia \SI{0}{\V}, provocando saturación. Para evitarlo, se inyecta un pedestal en el pin~5 (REF) del AD623 mediante un divisor resistivo aislado por un seguidor de tensión basado en el MCP6021 \cite{mcp6021_datasheet}.
+Sin un nivel de referencia en el pin REF del AD623, cualquier desequilibrio de polaridad negativa en el puente empujaría la salida del amplificador hacia \SI{0}{\V}, provocando saturación. Para evitarlo, se inyectó un pedestal en el pin~5 (REF) del AD623 mediante un divisor resistivo aislado por un seguidor de tensión basado en el MCP6021 \cite{mcp6021_datasheet}.
 
 \subsubsection*{Diseño inicial: $R_2 = \SI{22}{\kohm}$}
 
@@ -43,7 +97,7 @@ un margen de excursión reducido hacia la plena escala (\SI{1.5}{\kg}) y comprom
 
 \subsubsection*{Ajuste final: $R_2 = \SI{44}{\kohm}$}
 
-Para aumentar la excursión de la señal de salida y mejorar la resolución, se añadió una resistencia adicional de \SI{22}{\kohm} en serie con $R_2$, elevando el pedestal a:
+Para aumentar la excursión de la señal de salida y mejorar la resolución, se añadió una resistencia adicional de \SI{22}{\kohm} en serie con $R_2$ (ver figura \ref{fig:pedestal_estatico}), elevando el pedestal a:
 
 \[
     V_{\mathrm{PED,2}} = \SI{4.096}{\V} \cdot
@@ -57,16 +111,15 @@ Aunque el valor final del pedestal difiere del valor de \SI{1.0}{\V} nominal ind
 
 \begin{figure}[H]
     \centering
-    %\includesvg[width=0.65\textwidth]{figs/CKTO MCP6021}
+    \includegraphics[width=0.6\textwidth]{figs/CKTO MCP6021.png}
     \caption{Circuito generador del pedestal de referencia
         en su configuración final: divisor resistivo
         ($R_1 = \SI{68}{\kohm}$,
         $R_2 = 2 \times \SI{22}{\kohm} = \SI{44}{\kohm}$)
-        y seguidor MCP6021 con salida al pin~5 (REF)
+        y seguidor de tensión MCP6021 con salida al pin 5 (REF)
         del AD623.}
-    \label{fig:pedestal}
+    \label{fig:pedestal_estatico}
 \end{figure}
-
 
 \subsection{Análisis de Tolerancias (Worst-Case DC)}
 
@@ -74,51 +127,77 @@ En esta sección se presenta la tensión de error máxima prevista a la salida d
 
 \subsubsection{Cálculo del error inherente del sensor}
 
-El primer término de error proviene del desequilibrio físico del puente de Wheatstone. Se estableció un desequilibrio sin carga equivalente al 5\% de la salida a fondo de escala (FSO). Considerando la tensión de excitación unipolar de 4.096 voltios (proporcionado por la referencia del MCP1541) y la sensibilidad nominal de la célula de carga de 1 $\text{mV/V}$, la salida a fondo de escala se define como:
+El primer término de error proviene del desequilibrio físico del puente de Wheatstone. Se estableció un desequilibrio sin carga equivalente al 5\% de la salida a fondo de escala (FSO). Considerando la tensión de excitación unipolar de \SI{4.096}{\V} y la sensibilidad nominal de la célula de carga de \SI{1}{\milli\V\per\V}, la salida a fondo de escala se define como:
 
-$$V_{FSO}=V_{EXC} \cdot \text{Sensibilidad} = 4.096 \text{V} \cdot 1 \text{ mV/V} = 4.096 \text{ mV}$$
+$$V_{FSO}=V_{EXC} \cdot \text{Sensibilidad} = \SI{4.096}{\V} \cdot \SI{1}{\milli\V\per\V} = \SI{4.096}{\milli\V}$$
 
 Por lo que la tensión de error diferencial intrínseca aportada por el sensor en reposo es:
 
-$$V_{err\_sensor}=0.05 \cdot V_{FSO} = 0.05 \cdot 4.096 \text{ mV} = 0.2048 \text{ mV}$$
+$$V_{\mathrm{err,sensor}}=0.05 \cdot V_{FSO} = 0.05 \cdot \SI{4.096}{\milli\V} = \SI{0.2048}{\milli\V}$$
 
 \subsubsection{Error de la etapa de amplificación}
 
-La segunda etapa de error derivó del amplificador de instrumentación AD623. En el diseño implementado, la ganancia (G) se fijó mediante una resistencia $R_{G} = 50.2 \text{ }\Omega $. Aplicando la ecuación de la ganancia del fabricante \cite{ad623_datasheet}:
+La segunda etapa de error deriva del amplificador de instrumentación AD623. En el diseño implementado, la ganancia se fijó mediante una resistencia comercial $R_{G} = \SI{50.2}{\ohm}$. Aplicando la ecuación de la ganancia del fabricante \cite{ad623_datasheet}:
 
-$$\text{GAIN} = 1+100\text{ k}\Omega/R_G = 1+100\text{ k}\Omega/50.2\text{ }\Omega$$
-$$\text{GAIN} = 1993.032 \text{ V/V} $$
+$$G_{\mathrm{real}} = 1 + \frac{\SI{100}{\kilo\ohm}}{R_G} = 1 + \frac{\SI{100}{\kilo\ohm}}{\SI{50.2}{\ohm}}$$
+$$G_{\mathrm{real}} = \SI{1993.032}{\V\per\V}$$
 
 \subsubsection{Errores referidos a la entrada (amplificados por la ganancia G)}
 
 \begin{itemize}
-    \item Tensión de offset de entrada ($V_{OSI}$): De acuerdo con las especificaciones del fabricante \cite{ad623_datasheet}, el valor máximo es de 200 $\mu$ \unit{V} = 0.2 m\unit{V}
-    \item Caída de tensión por la corriente de offset ($V_{err\_IB}$): En el esquema de diseño, las entradas del AD623 están precedidas por un filtro pasivo contra interferencias de radiofrecuencia (RFI) compuesto por las resistencias R1 = R2 = 15.9 k $\Omega$. Al circilar la corriente de offset de entrada ($I_{OS}$) (de acuerdo con \cite{ad623_datasheet}, es de 2 \text{ nA}), a través de estas resistencias, se induce un error diferencial adicional evaluado en:
-          $$V_{err\_IB} = I_{OS} \cdot R_{filtro} = 2 \text{ nA} \cdot 15.9 \text{ k} \Omega=  0.0318 \text{ mV}$$
+    \item Tensión de offset de entrada ($V_{OSI}$): De acuerdo con las especificaciones del fabricante \cite{ad623_datasheet}, el valor máximo es de \SI{200}{\micro\V} = \SI{0.2}{\milli\V}.
+    \item Caída de tensión por la corriente de offset ($V_{\mathrm{err,IB}}$): En el esquema de diseño, las entradas del AD623 están precedidas por un filtro pasivo contra interferencias de radiofrecuencia (RFI) compuesto por las resistencias $R_1 = R_2 = \SI{15.9}{\kilo\ohm}$. Al circular la corriente de offset de entrada ($I_{OS}$), cuyo valor máximo es de \SI{2}{\nano\A} según \cite{ad623_datasheet}, a través de estas resistencias, se induce un error diferencial adicional evaluado en:
+          $$V_{\mathrm{err,IB}} = I_{OS} \cdot R_{\mathrm{filtro}} = \SI{2}{\nano\A} \cdot \SI{15.9}{\kilo\ohm}= \SI{0.0318}{\milli\V}$$
 \end{itemize}
 
 \subsubsection{Errores referidos a la salida (independientes de la ganancia)}
 
 \begin{itemize}
-    \item Tensión de offset de salida ($V_{OSO}$): El fabricante especifica un valor máximo de 1000 $\mu$V = 1 m\unit{V}.
+    \item Tensión de offset de salida ($V_{OSO}$): El fabricante especifica un valor máximo de \SI{1000}{\micro\V} = \SI{1}{\milli\V}.
 \end{itemize}
 
 \subsubsection{Ecuación global del peor escenario y contraste de saturación}
 
-Aplicando el factor de amplificación de la etapa (G = 1993.032 V/V), solo a las perturbaciones generadas a la entrada del sistema, la ecuación analítica del error máximo en corriente continua es:
+Aplicando el factor de amplificación de la etapa, solo a las perturbaciones generadas a la entrada del sistema, la ecuación analítica del error máximo en corriente continua es:
 
-$$V_{error\_MAX}=G \cdot (V_{err\_sensor} + V_{OSI} + V_{err\_IB}) + V_{OSO}$$
+$$V_{\mathrm{error,max}}=G_{\mathrm{real}} \cdot (V_{\mathrm{err,sensor}} + V_{OSI} + V_{\mathrm{err,IB}}) + V_{OSO}$$
 
-$$V_{error\_MAX}= 1993.032 \cdot (0.2048 \text{ mV} + 0.2 \text{ mV} + 0.0318 \text{ mV}) + 1 \text
-    { mV}$$
+$$V_{\mathrm{error,max}}= \SI{1993.032}{\V\per\V} \cdot (\SI{0.2048}{\milli\V} + \SI{0.2}{\milli\V} + \SI{0.0318}{\milli\V}) + \SI{1}{\milli\V}$$
 
-$$V_{error\_MAX}= 871.16 \text
-    { mV}$$
+$$V_{\mathrm{error,max}}= \SI{871.16}{\milli\V}$$
 
-Para determinar la tensión estática absoluta en el terminal de salida del acondicionador ($V_{OUT\_reposo}$), se debe superponer el voltaje del pedestal virtual de 1609.14 m\unit{V}, introducido en el terminal de referencia (REF) del AD623 mediante la etapa aislada del amplificador operacional MCP6021.
+Para determinar la tensión estática absoluta en el terminal de salida del acondicionador ($V_{\mathrm{OUT,reposo}}$), se debe superponer el voltaje del pedestal virtual de \SI{1609.14}{\milli\V}, introducido en el terminal de referencia (REF) del AD623 mediante la etapa aislada del amplificador operacional MCP6021.
 
-$$ V_{OUT\_reposo} = V_{pedestal} \pm V_{error\_MAX} = 1609.14 \text{ mV} \pm 871.16 \text{ mV} $$
+$$ V_{\mathrm{OUT,reposo}} = V_{\mathrm{pedestal}} \pm V_{\mathrm{error,max}} = \SI{1609.14}{\milli\V} \pm \SI{871.16}{\milli\V} $$
 
-$$ V_{OUT\_reposo} = \{737.98 \text{ - } 2480.3\} \text{ mV}$$
+$$ V_{\mathrm{OUT,reposo}} \in [\SI{737.98}{\milli\V}, \SI{2480.3}{\milli\V}] $$
 
-De acuerdo con el resultado anterior, se puede constatar que el nivel de tensión en reposo se mantiene dentro del rango de trabajo de la entrada analógica de la tarjeta DAQ NI USB-6001.
+El resultado anterior define una referencia teórica inicial para el diseño, la cual debe contrastarse posteriormente con la medición experimental realizada sobre el montaje físico.
+
+\subsection{Contraste empírico sin carga}
+
+La guía del proyecto exige contrastar el intervalo teórico anterior con la tensión sin carga medida físicamente a la salida del amplificador, una vez implementados el puente, el filtro RFI y el pedestal. La magnitud registrada experimentalmente fue:
+
+\[
+    V_{o,\mathrm{sin\ carga,med}} = \SI{0.42}{\V}
+\]
+
+Al comparar este resultado con el intervalo teórico obtenido en el análisis de peor caso,
+
+\[
+    \SI{737.98}{\milli\V} \leq V_{o,\mathrm{sin\ carga,med}} \leq \SI{2480.3}{\milli\V}
+\]
+
+Se observa que la medida experimental queda por debajo del límite inferior estimado en \SI{317.98}{\milli\V}. Este contraste indica que el modelo simplificado de tolerancias empleado en el apartado anterior subestima la excursión negativa real en reposo; no obstante, la salida medida permanece por encima de \SI{0}{\V}, por lo que el pedestal sigue cumpliendo su función esencial de evitar la saturación inferior de la etapa analógica. El error residual respecto al nivel de referencia puede expresarse como:
+
+\[
+    \Delta V_{\mathrm{reposo}} = V_{o,\mathrm{sin\ carga,med}} - V_{\mathrm{PED,2,med}}
+\]
+
+donde $V_{\mathrm{PED,2,med}} = \SI{1.597}{\V}$ es el pedestal medido en la implementación final. Sustituyendo el valor experimental obtenido:
+
+\[
+    \Delta V_{\mathrm{reposo}} = \SI{0.42}{\V} - \SI{1.597}{\V} = \SI{-1.177}{\V}
+\]
+
+Este resultado coincide, dentro del error experimental (como se muestra posteriormente en el front panel de la figura \ref{fig:establecer_cero_labview}), con la tensión diferencial residual observada en el sistema antes de aplicar la tara por \textit{software}, y justifica la necesidad de la corrección digital del cero durante la calibración.
